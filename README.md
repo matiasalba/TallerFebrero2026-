@@ -12,10 +12,19 @@ Se trata de la instalación del servicio NFS en servidores CentOS, el montaje de
 
 Todas las VM requieren de 2 vCPU y 2Gb de RAM. Requerirán de un disco de 20Gb
 
+En la VM desde la que corramos ansible debemos instalar dos collections de Ansible:
+
+- posix
+- community general
+
+```bash
+ansible-galaxy collection install community.general ansible.posix
+```
+
 ### Particionamiento:
 
 - **/home** - 2Gb
-- **/**- 10Gb
+- **/** - 10Gb
 - **/Var** - 3Gb
 - **/boot** - 1Gb
 - **/swap** - 4Gb
@@ -45,7 +54,7 @@ Adicionalmente, hay un playbook adicional, que corre todos los anteriormente men
 ### Ejecución de playbook: 
 
 ```ansible
-ansible-playbook -i inventories/hosts.ini playbooks/sites.yaml --ask-become-pass
+ansible-playbook -i inventories/hosts.ini playbooks/site.yaml --ask-become-pass
 ```
 
 ## Verificación de funcionamiento. 
