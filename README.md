@@ -200,9 +200,10 @@ centos02                   : ok=3    changed=0    unreachable=0    failed=0    s
 nfs01                      : ok=7    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu01                   : ok=20   changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 ubuntu02                   : ok=20   changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0  
+```
 
 
-Para verificar que el webserver responde: 
+### Para verificar que el webserver responde: 
 
 ```ansible
 ansible -i inventories/hosts.ini ubuntu -m command -a "curl http://localhost:8080"
