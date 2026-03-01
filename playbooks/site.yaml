@@ -1,0 +1,15 @@
+---
+- name: hardening.yaml
+  ansible.builtin.import_playbook: hardening.yaml
+
+- name: NFS Server
+  ansible.builtin.import_playbook: nfs-server.yaml
+
+- name: NFS Client
+  ansible.builtin.import_playbook: nfs-client.yaml
+
+- name: UFW
+  ansible.builtin.import_playbook: ubuntu-ufw.yaml
+
+- name: Webserver
+  ansible.builtin.import_playbook: webserver.yaml
