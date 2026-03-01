@@ -204,11 +204,12 @@ ubuntu02                   : ok=20   changed=3    unreachable=0    failed=0    s
 
 Para verificar que el webserver responde: 
 
-```bash
-ansible -i inventories/hosts.ini ubuntu -m command -a 'curl http://localhost:8080'
+```ansible
+ansible -i inventories/hosts.ini ubuntu -m command -a "curl http://localhost:8080"
 ```
 
 Respuesta esperada:
+
 ```bash
 <!DOCTYPE HTML>
 <html lang="en">
