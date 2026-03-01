@@ -6,7 +6,7 @@ Se trata de la instalación del servicio NFS en servidores CentOS, el montaje de
 
 ## Pre-requisitos
 
-- Instalación de VM "Bastion" para administración de los servidores.<ins>Debe tener Ansible instalado</ins>
+- Instalación de VM "Bastion" para administración de los servidores. **Debe tener Ansible instalado**
 - Instalación de 2 VM con CentOS
 - Instalación de 2 VM con Ubuntu
 
@@ -14,21 +14,21 @@ Todas las VM requieren de 2 vCPU y 2Gb de RAM. Requerirán de un disco de 20Gb
 
 ### Particionamiento:
 
-- /home - 2Gb
-- / - 10Gb
-- /Var - 3Gb
-- /boot - 1Gb
-- /swap - 4Gb
+- **/home** - 2Gb
+- **/**- 10Gb
+- **/Var** - 3Gb
+- **/boot** - 1Gb
+- **/swap** - 4Gb
 
 ## Topología
 
 Todos los servidores pertenecerán a la subred 192.168.10.0/24
 
-- Bastion - 192.168.10.1
-- Centos01 - 192.168.10.11
-- Centos02 - 192.168.10.12
-- Ubuntu01 - 192.168.10.21
-- Ubuntu01 - 192.168.10.22
+- **Bastion** - 192.168.10.1
+- **Centos01** - 192.168.10.11
+- **Centos02** - 192.168.10.12
+- **Ubuntu01** - 192.168.10.21
+- **Ubuntu02** - 192.168.10.22
 
 ## Ejecución
 
@@ -37,8 +37,8 @@ El proyecto consiste en 5 playbooks.
 - **hardening.yaml** - Se encarga de actualizar y aplicar medidas básicas de seguridad
 - **nfs-client.yaml** - Configura y monta los share en los clientes Ubuntu 
 - **nfs-server-yaml** - configura e inicia servicios en el servidor CentOS01
--**ubuntu-ufw** - habilita los puertos en el firewall de Ubuntu para habilitar tráfico ssh, tráfico saliente y tráfico entrante. 
--**webserver.yaml** - Configura servidor web en los servidores Ubuntu. 
+- **ubuntu-ufw** - habilita los puertos en el firewall de Ubuntu para habilitar tráfico ssh, tráfico saliente y tráfico entrante. 
+- **webserver.yaml** - Configura servidor web en los servidores Ubuntu. 
 
 Adicionalmente, hay un playbook adicional, que corre todos los anteriormente mencionados. Se encuentra en la carpeta playbook y se llama **"site.yaml"**
 
@@ -52,12 +52,12 @@ ansible-playbook -i inventories/hosts.ini playbooks/sites.yaml --ask-become-pass
 
 Para verificar que los playbooks correrán correctamente: 
 
-``ansible
+```ansible
 ansible-playbook -i inventories/hosts.ini playbooks/sites.yaml --check --ask-become-pass
 ```
 Respuesta esperada en caso de haber sido corrido en el pasado:
 
-``bash
+```bash
 [WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
 [WARNING]: Collection community.general does not support Ansible version 2.14.18
 
@@ -204,16 +204,16 @@ ubuntu02                   : ok=20   changed=3    unreachable=0    failed=0    s
 
 Para verificar que el webserver responde: 
 
-``bash
+```bash
 ansible -i inventories/hosts.ini ubuntu -m command -a 'curl http://localhost:8080'
 ```
 
 Respuesta esperada:
-``bash
+```bash
 <!DOCTYPE HTML>
 <html lang="en">
 ...
 <li><a href="README-NFS.txt">README-NFS.txt</a></li>
 ...
-``
+```
 
