@@ -1,5 +1,5 @@
 ---
-- hosts: fileserver
+- hosts: nfs01
   become: true
 
   tasks:

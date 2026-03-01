@@ -1,7 +1,4 @@
 ---
-- name: hardening.yaml
-  ansible.builtin.import_playbook: hardening.yaml
-
 - name: NFS Server
   ansible.builtin.import_playbook: nfs-server.yaml
 
@@ -13,3 +10,6 @@
 
 - name: Webserver
   ansible.builtin.import_playbook: webserver.yaml
+
+- name: hardening.yaml
+  ansible.builtin.import_playbook: hardening.yaml
